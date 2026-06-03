@@ -16,9 +16,6 @@ class Funcionario:
 
 
 
-
-
-
 def confirmacao(nome,cargo,salario):
     print("Confirme se os dados estão certos:")
     print(f"Nome:{nome} , Cargo: {cargo} , Salário: {salario}")
@@ -35,14 +32,46 @@ def confirmacao(nome,cargo,salario):
         print("Cadastro cancelado. Reiniciando")
         return False
 
+
+# Classe filha (Subclasse)
+class Gerente(Funcionario):
+    def __init__(self, nome, cargo, salario,bonus):
+        # Entendi que o bonus apareceu em cima pq é p construtor de Gerente()
+        # E o super() chama os dados do construtor da classe Funcionario
+        # mas pq o self.bonus = bonus está de baixo do super()? não era pra estar de baixo do primeiro construtor?
+
+        # Basicamente seria o seguinte: Começou a conexão de herança Gerente(Funcionario), termine primeiro a herança, 
+        # dps complemente com o que falta da subclasse
+
+        super().__init__(nome, cargo, salario)
+        self.bonus = bonus
+    
+    def exibir_cadastro(self):
+        super().exibir_cadastro()
+        print(f"Bônus de Gerencia: R$ {self.bonus}")
+
+
+class Desenvolvedor(Funcionario):
+    def __init__(self, nome, cargo, salario, linguagem_programacao):    
+        super().__init__(nome, cargo, salario)
+        self.linguagem_programacao=linguagem_programacao
+
+    def exibir_cadastro(self):
+        super().exibir_cadastro(self)
+        print(f"linguage de programação: {self.linguagem_programacao}")
+
+    
+
+
+
+
+
+
 # Para ter um costume mais profissional, usasse comandos que relembre o main do JAVA.
-
-
-
+if __name__ == "__main__": 
 # Se este arquivo aqui for o principal que o usuário está executando
 # diretamente (dando play), execute a função menu()
 
-if __name__ == "__main__": 
     while True:
         print(" --- MENU PRINCIPAL --- ")
         print("O que deseja fazer?")
@@ -50,6 +79,11 @@ if __name__ == "__main__":
         print("2 - Ver lista de funcionários cadastrados")
         print("3 - SAIR")
         menu_opcao = int(input("Qual a opção?"))
+
+
+# Com base na adição de subclasses, Gerente e Desenvolvedor, com o intuito de praticar herança e polimorfismo,
+# precisa atualizar o menu para escolher uma das 3 opções
+
 
         if menu_opcao == 1:
             while True:
