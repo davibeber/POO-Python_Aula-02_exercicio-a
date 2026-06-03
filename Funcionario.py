@@ -35,9 +35,14 @@ def confirmacao(nome,cargo,salario):
         print("Cadastro cancelado. Reiniciando")
         return False
 
+# Para ter um costume mais profissional, usasse comandos que relembre o main do JAVA.
 
 
-def menu():
+
+# Se este arquivo aqui for o principal que o usuário está executando
+# diretamente (dando play), execute a função menu()
+
+if __name__ == "__main__": 
     while True:
         print(" --- MENU PRINCIPAL --- ")
         print("O que deseja fazer?")
@@ -64,11 +69,7 @@ def menu():
             print("Desligando sistema")
             break
         else:
-            print("Erro! Tente novamente")
-
-
-menu()
-            
+            print("Erro! Tente novamente")            
 
 
 
